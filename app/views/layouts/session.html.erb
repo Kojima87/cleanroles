@@ -1,0 +1,9 @@
+<header>
+  <%=
+  if current_user
+    link_to 'ログアウト', :session, method: :delete
+  else
+    link_to 'ログイン', :log_in
+  end
+  %>
+</header>
