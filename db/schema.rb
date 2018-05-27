@@ -10,20 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418125410) do
+ActiveRecord::Schema.define(version: 20180524025900) do
 
-  create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.boolean  "delete_flag"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "histories", force: :cascade do |t|
+    t.date     "date",        default: -> { "now()" }, null: false
+    t.string   "member_name",                          null: false
+    t.string   "role_name",                            null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.boolean  "delete_flag"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "members", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.integer  "status",     default: 0,  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end

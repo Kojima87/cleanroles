@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
 function initProc(){
   // エリアの初期化
   $('#myentry input:checkbox').each(function(i, v){
@@ -22,6 +23,19 @@ function initProc(){
 }
 
 $(function() {
+
+  $('#lottery').click(function () {
+    alert (roles);
+    initProc();
+    var entry_cnt = $('#myentry input:checkbox:checked').length;
+
+
+
+
+  });
+
+
+
   // 担当決め
   $("p:first").click(function(){
     initProc();

@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>当番表</title>
-		<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-	</head>
-	<body>
-    <input name="roles" type="hidden" value="=@roles">
-    <h1>今日の掃除当番</h1>
-		<p class="titlebutton">ここをクリックしてください！</p>
-		<input type="checkbox" id="entry_all">All
+<h1>掃除当番を決めよう！</h1>
+<p id="notice"><%= notice %></p>
 
-	  <table id="myentry">
-      <% @members.each do |member| %>
-  	    <tr><td><input type="checkbox" name="entry" id="id" class="list" value="<%= member.name %>"></td><td><%= member.name %></td><td></td></tr>
-      <% end %>
-	  </table>
-		<input type="text" class="input_name" name="new_entry" id="new_entry" placeholder="追加するエントリーの名前を入力してください">
-		<input type="button" class="square_btn" id="add_btn" value="エントリー追加">
-		<input type="button" class="square_btn" id="delete_btn" value="エントリー削除">
-	</body>
-</html>
+<table id="myentry" class="table table-striped">
+  <% @members.each do |member| %>
+    <tr>
+      <td>エントリーしました</td>
+      <td><%= member.name %></td>
+    </tr>
+  <% end %>
+  <% @decision_members.each do |decision_member| %>
+    <tr>
+      <td>やります！</td>
+      <td><%= decision_member.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= button_to 'ここをクリックしてください！',  { action: 'lottery' }, { class: 'btn btn-info'} %>

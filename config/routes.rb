@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :roles
-  resources :members
-  root 'top#index'
-#  post 'add_entry' => 'top#add_entry'
-  get    'login'   => 'sessions#new'
-  post   'session'   => 'sessions#create'
-  delete 'session'  => 'sessions#destroy'
+  namespace :manage do
+    resources :members
+    resources :roles
+    resources :histories
+  end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  post 'lottery' => 'top#lottery'
+  get 'lottery' => 'top#lottery'
+
+  root 'top#index'
 end

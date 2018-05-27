@@ -1,0 +1,27 @@
+<h1>今日の当番が決定しました！</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>参考</th>
+      <% @histories.each_key do |key| %>
+        <th><%= key %></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>今日</td>
+      <% @members.each do |member| %>
+        <td><%= member %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td>前回</td>
+      <% @histories.each_value do |value| %>
+        <td><%= value %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
