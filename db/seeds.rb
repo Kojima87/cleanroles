@@ -14,9 +14,9 @@ Role.create!(name: '床・机')
 Role.create!(name: 'トイレ・シンク')
 Role.create!(name: 'ゴミ捨て')
 
-History.create!(member_name: 'saitos', role_name: '床・机')
-History.create!(member_name: 'kabaneshi', role_name: 'トイレ・シンク')
-History.create!(member_name: 'kojima87', role_name: 'ゴミ捨て')
+History.create!(date: '2018-05-22', member_name: 'saitos', role_name: '床・机')
+History.create!(date: '2018-05-22', member_name: 'kabaneshi', role_name: 'トイレ・シンク')
+History.create!(date: '2018-05-22', member_name: 'kojima87', role_name: 'ゴミ捨て')
 
 =begin
 members = []

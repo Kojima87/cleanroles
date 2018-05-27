@@ -4,7 +4,7 @@ class Manage::HistoriesController < Manage::BaseController
   # GET /manage/histories
   # GET /manage/histories.json
   def index
-    @histories = History.all
+    @histories = History.order('date DESC')
   end
 
   # GET /manage/histories/1
