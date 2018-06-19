@@ -4,7 +4,7 @@ class Manage::MembersController < Manage::BaseController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.order('id')
   end
 
   # GET /members/1

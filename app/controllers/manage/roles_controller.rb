@@ -4,7 +4,7 @@ class Manage::RolesController < Manage::BaseController
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all
+    @roles = Role.order('id')
   end
 
   # GET /roles/1

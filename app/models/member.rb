@@ -31,14 +31,16 @@ class Member < ApplicationRecord
     members = Member.doit.sort.pluck(:name)
     roles = Role.all.pluck(:name)
     members += Member.entry.pluck(:name).shuffle[0, roles.count - members.count]
-    entry_members = members.shuffle
+    entry_members = members.shuffle.first(5) # shuffleは1回だと元のまま
     return entry_members
   end
 
 
   def self.avoid_duplication(members)
-    last_date = History.last.date
-    history_data = History.where(date: last_date).sort.pluck(:role_name, :member_name)
+    role_count = Role.count
+    history_data = History.last(role_count).sort.pluck(:role_name, :member_name)
+#    last_date = History.last.date
+#    history_data = History.where(date: last_date).sort.pluck(:role_name, :member_name)
     history_hash = Hash[*history_data.flatten]
 
     loop do

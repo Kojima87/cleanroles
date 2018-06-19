@@ -1,11 +1,14 @@
 class TopController < ApplicationController
   def index
-    @members = Member.entry
-    @decision_members = Member.doit
+    @members = Member.order('id')
   end
 
   def lottery
-    @members, @histories = Member.data_set()
+    if Role.count > (Member.doit.count + Member.entry.count)
+      redirect_to root_path, notice: 'メンバーを増やしてください！'
+    else
+      @members, @histories = Member.data_set()
+    end
   end
 
   private

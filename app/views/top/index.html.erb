@@ -4,14 +4,15 @@
 <table id="myentry" class="table table-striped">
   <% @members.each do |member| %>
     <tr>
-      <td>エントリーしました</td>
+      <% case member.status %>
+      <% when 'entry' %>
+        <td>エントリーしました</td>
+      <% when 'doit' %>
+        <td>やります！</td>
+      <% when 'pass' %>
+        <td>パスします</td>
+      <% end %>
       <td><%= member.name %></td>
-    </tr>
-  <% end %>
-  <% @decision_members.each do |decision_member| %>
-    <tr>
-      <td>やります！</td>
-      <td><%= decision_member.name %></td>
     </tr>
   <% end %>
 </table>
